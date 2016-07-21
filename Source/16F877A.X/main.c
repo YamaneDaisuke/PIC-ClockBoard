@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
     
     while(1){
     
-            PORTA |= 0x3F;
+            PORTA = 0x3F;
             PORTB |= 0xFE;
             PORTC |= 0xE7;
             PORTD |= 0xFF;
@@ -63,25 +63,25 @@ int main(int argc, char** argv) {
 //            PORTC &= temp_mask;
 //            PORTD &= mask_seg[seg_data[3]] | 0xfe;
 //           
-            PORTA &=  mask_seg[seg_data[1]];
+            PORTA =  mask_seg[seg_data[1]];
             PORTE &= (mask_seg[seg_data[1]]>>6);
             PORTB &= (mask_seg[seg_data[3]]<<1);
             PORTD &= (mask_seg[seg_data[2]]<<1) |0x01;
-            temp_mask  = (mask_seg[seg_data[1]]>>1) & 0x07;
-            temp_mask |= (mask_seg[seg_data[1]]<<1) & 0xe0;
+            temp_mask  = (mask_seg[seg_data[0]]>>1) & 0x07;
+            temp_mask |= (mask_seg[seg_data[0]]<<1) & 0xe0;
             temp_mask |= 0x18;
             PORTC &= temp_mask;
-            PORTD &= mask_seg[seg_data[1]] | 0xfe;
+            PORTD &= mask_seg[seg_data[0]] | 0xfe;
           
             __delay_ms(1);
-            PORTA &= ~0x3F;
+            PORTA = ~0x3F;
             PORTB &= ~0xFE;
             PORTC &= ~0xE7;
             PORTD &= ~0xFF;
             PORTE &= ~0x01;
             __delay_ms(18);
-            
-        //if(cnt>=100){
+        //cnt++;
+        if(cnt>=50){
             seg_data[0]++;
             if(seg_data[0]>=10){
                 seg_data[0]=0;
@@ -102,7 +102,7 @@ int main(int argc, char** argv) {
             if(number_high>=0x10)
                 number_high=0;
             cnt=0;
-        //}
+        }
     }
     return (EXIT_SUCCESS);
 }
