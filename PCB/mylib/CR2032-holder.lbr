@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.6.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -72,6 +72,28 @@
 <wire x1="-10.55" y1="9.35" x2="10.55" y2="9.35" width="0.127" layer="21"/>
 <wire x1="-3.75" y1="-10.45" x2="3.75" y2="-10.45" width="0.6096" layer="21"/>
 </package>
+<package name="CR2032-HOLDER2">
+<circle x="0" y="0" radius="11.4" width="0.127" layer="21"/>
+<wire x1="3.3" y1="-10.9" x2="3.3" y2="-16.4" width="0.127" layer="21"/>
+<wire x1="3.3" y1="-16.4" x2="-3.3" y2="-16.4" width="0.127" layer="21"/>
+<wire x1="-3.3" y1="-16.4" x2="-3.3" y2="-10.9" width="0.127" layer="21"/>
+<pad name="GND" x="0" y="6" drill="1"/>
+<pad name="+3V" x="0" y="-14" drill="1"/>
+</package>
+<package name="CR2032-HOLDER_V">
+<pad name="VL" x="5" y="1.7" drill="0.8" diameter="1.6764" rot="R180"/>
+<pad name="VR" x="-5" y="1.7" drill="0.8" diameter="1.6764" rot="R180"/>
+<pad name="GND" x="0" y="-1.7" drill="0.8" diameter="1.6764" rot="R180"/>
+<wire x1="-11.25" y1="3.2" x2="11.25" y2="3.2" width="0.127" layer="21"/>
+<wire x1="11.25" y1="3.2" x2="11.25" y2="-3.2" width="0.127" layer="21"/>
+<wire x1="11.25" y1="-3.2" x2="-11.25" y2="-3.2" width="0.127" layer="21"/>
+<wire x1="-11.25" y1="-3.2" x2="-11.25" y2="3.2" width="0.127" layer="21"/>
+<wire x1="-2.62" y1="-1.66" x2="-1.62" y2="-1.66" width="0.127" layer="21"/>
+<wire x1="-7.37" y1="1.71" x2="-6.37" y2="1.71" width="0.127" layer="21"/>
+<wire x1="-6.87" y1="2.21" x2="-6.87" y2="1.21" width="0.127" layer="21"/>
+<wire x1="2.74" y1="1.62" x2="3.74" y2="1.62" width="0.127" layer="21"/>
+<wire x1="3.24" y1="2.12" x2="3.24" y2="1.12" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="CR2032-HOLDER">
@@ -85,9 +107,18 @@
 <wire x1="-7.62" y1="0" x2="-7.62" y2="-2.54" width="0.254" layer="94"/>
 <wire x1="-7.62" y1="0" x2="-2.54" y2="0" width="0.254" layer="94"/>
 </symbol>
+<symbol name="CR2032-HOLDER2">
+<pin name="+3V" x="-7.62" y="0" visible="off" length="middle"/>
+<pin name="GND" x="7.62" y="0" visible="off" length="middle" rot="R180"/>
+<wire x1="-2.54" y1="7.62" x2="-2.54" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="-2.54" width="0.6096" layer="94"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="CR2032-HOLDER">
+<description>&lt;h1&gt;ボタン電池基板取付用ホルダー（金属フレーム）　ＣＲ２０３２用&lt;/h1&gt;
+&lt;p&gt;秋月電子通商より購入可能
+詳細は&lt;a href="http://akizukidenshi.com/catalog/g/gP-06925/"&gt;商品ページを参照&lt;/a&gt;&lt;/p&gt;</description>
 <gates>
 <gate name="G$1" symbol="CR2032-HOLDER" x="2.54" y="0"/>
 </gates>
@@ -96,6 +127,45 @@
 <connects>
 <connect gate="G$1" pin="3VL" pad="3VL"/>
 <connect gate="G$1" pin="3VR" pad="3VR"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="CR2032-HOLDER2">
+<description>&lt;h1&gt;ボタン電池基板取付用ホルダー　ＣＲ２０３２用（小型タイプ）&lt;/h1&gt;
+&lt;p&gt;秋月電子通商より購入可能
+詳細は&lt;a href="http://akizukidenshi.com/catalog/g/gP-00706/"&gt;商品ページを参照&lt;/a&gt;&lt;/p&gt;</description>
+<gates>
+<gate name="G$1" symbol="CR2032-HOLDER2" x="17.78" y="-7.62"/>
+</gates>
+<devices>
+<device name="" package="CR2032-HOLDER2">
+<connects>
+<connect gate="G$1" pin="+3V" pad="+3V"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="CR2032-HOLDER3">
+<description>&lt;h1&gt;ボタン電池基板取付用ホルダー　ＣＲ２０３２用（縦・小型）&lt;/h1&gt;
+&lt;p&gt;秋月電子通商より購入可能
+詳細は&lt;a href="http://akizukidenshi.com/catalog/g/gP-01443/"&gt;商品ページを参照&lt;/a&gt;&lt;/p&gt;</description>
+<gates>
+<gate name="G$1" symbol="CR2032-HOLDER" x="2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="CR2032-HOLDER_V">
+<connects>
+<connect gate="G$1" pin="3VL" pad="VL"/>
+<connect gate="G$1" pin="3VR" pad="VR"/>
 <connect gate="G$1" pin="GND" pad="GND"/>
 </connects>
 <technologies>
